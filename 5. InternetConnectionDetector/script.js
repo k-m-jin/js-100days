@@ -28,10 +28,12 @@ async function connectionStatus() {
 setInterval(async () => {
   const result = await connectionStatus()
   if (result) {
-    loading()
+    loading(true)
     // statusDisplay.textContent = "You're ONLINE!!! Connection looks good."
     statusDisplay.innerHTML = "You're ONLINE!!! Connection looks good."
     setColor()
+  } else {
+    loading(false)
   }
 }, 5000)
 
@@ -44,6 +46,11 @@ window.addEventListener('load', async (event) => {
   }
 })
 
-const loading = () => {
-  loadingEl.style.display = 'none'
+//
+function loading(isLoading) {
+  if (isLoading) {
+    loadingEl.style.display = 'none'
+  } else {
+    loadingEl.style.display = 'block'
+  }
 }
