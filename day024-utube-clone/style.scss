@@ -1,0 +1,222 @@
+:root {
+  /* Color */
+  --white-color: #fff;
+  --black-color: #140a00;
+  --blue-color: #045fd4;
+  --red-color: #ff0000;
+  --grey-dark-color: #909090;
+  --grey-light-color: #e0e0e0;
+
+  /* Size */
+  --spacing: 12px;
+  --spacing-small: 6px;
+  --avatar-size: 36px;
+
+  /* Font Size */
+  --font-large: 20px;
+  --font-regular: 16px;
+  --font-medium: 14px;
+  --font-small: 12px;
+  --font-micro: 10px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Roboto;
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+button:focus {
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing);
+  background-color: var(--black-color);
+  color: var(--white-color);
+  .logo {
+    font-size: var(--font-large);
+    i {
+      color: var(--red-color);
+    }
+  }
+  .icons .fa-search {
+    margin-right: var(--spacing);
+  }
+}
+
+/* Video player */
+.player {
+  position: sticky;
+  top: 0;
+  text-align: center;
+  background-color: var(--black-color);
+  video {
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+  }
+}
+
+/* Video info */
+.infoAndUpNext {
+  display: flex;
+  flex-direction: column;
+  .info {
+    padding: var(--spacing);
+  }
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+/* Metadata */
+.info {
+  .metadata {
+    .hashtags {
+      display: flex;
+      font-size: var(--font-small);
+      color: var(--blue-color);
+      li {
+        margin-right: var(--spacing);
+      }
+    }
+    .titleAndButton {
+      display: flex;
+      .title {
+        font-size: var(--font-medium);
+        margin-right: var(--spacing);
+        &.clamp {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+        }
+      }
+      .moreBtn {
+        height: 100%;
+        transition: transform 300ms ease-in-out;
+        &.clicked {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}
+
+.info .metadata .views {
+  font-size: var(--font-small);
+  color: var(--grey-dark-color);
+}
+
+/* Action buttons */
+.info .actions {
+  display: flex;
+  justify-content: space-around;
+  margin: var(--spacing) 0;
+  button {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-small);
+    color: var(--grey-dark-color);
+    i {
+      margin: 0 auto;
+      margin-bottom: var(--spacing-small);
+      // margin-bottom: calc(var(--padding) / 2);
+      font-size: var(--font-regular);
+      &.active {
+        color: var(--blue-color);
+      }
+    }
+  }
+}
+
+/* Channel description */
+.info .channel {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--grey-light-color);
+  border-bottom: 1px solid var(--grey-light-color);
+  .metadata {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-small) 0;
+    img {
+      width: var(--avatar-size);
+      height: var(--avatar-size);
+      border-radius: 50%;
+      margin-right: var(--spacing);
+    }
+    .info {
+      display: flex;
+      flex-direction: column;
+      .name {
+        font-size: var(--font-medium);
+      }
+      .subscribers {
+        font-size: var(--font-small);
+        color: var(--grey-dark-color);
+      }
+    }
+  }
+  .subscribe {
+    text-transform: uppercase;
+    color: var(--red-color);
+    font-size: var(--font-medium);
+  }
+}
+
+/* Up next */
+.upNext {
+  padding: 0 var(--spacing);
+  > .title {
+    font-size: var(--font-medium);
+    color: var(--grey-dark-color);
+    margin-bottom: var(--spacing-small);
+  }
+  .item {
+    display: flex;
+    margin-top: var(--spacing);
+    .img {
+      flex-basis: 35%;
+      margin-right: var(--spacing);
+      img {
+        width: 100%;
+      }
+    }
+    .itemInfo {
+      flex-basis: 60%;
+      display: flex;
+      flex-direction: column;
+      .title {
+        font-size: var(--font-small);
+      }
+      .name,
+      .views {
+        font-size: var(--font-micro);
+        color: var(--grey-dark-color);
+      }
+    }
+    .moreBtn {
+      flex-basis: 5%;
+      height: 100%;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    padding: var(--spacing);
+  }
+}
